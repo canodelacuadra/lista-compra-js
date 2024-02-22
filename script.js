@@ -1,33 +1,25 @@
-// declaramos la llista
-let lista=[]
-// conexiones con la interfaz mediante DOM
-const display =document.getElementById("display")
-const button= document.getElementById('hacer-lista')
-button.addEventListener('click', lista_compra)
-function lista_compra(){
-    solicitar_deseo() 
-    agregar_lista(compra)
-    // mostrar lista
-    mostrar_lista(lista)
-    }
 
-// solicitar_deseo
-function solicitar_deseo(){
-    // solicitamos el pedido al usuario
-    let compra = prompt('Qué quieres comprar')
-    return compra
+// conectores dom con la interfaz
+const itemLista =document.getElementById('item-lista')
+const button= document.getElementById('agregar-lista')
+const display= document.getElementById('mostrar-lista')
+
+// añadimos un producto a la lista
+let  agregar_producto = function(){
+    let item =itemLista.value
+    let li = document.createElement('li')
+    li.innerHTML= `${item} <button onclick="this.parentElement.style.display='none'">Quitar</button>`
+    display.appendChild(li)
+
 }
-// añadimos pedido
-function agregar_lista(compra){
-lista[lista.length]=compra
+
+function eliminar(){
+    console.log(this)
 }
-// mostrar lista
-function mostrar_lista(lista){
-    lista.forEach(element => {
-        display.innerHTML+= element
-    });
- 
-}
+button.addEventListener('click', agregar_producto)
+
+
+
 
 
 
